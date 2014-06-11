@@ -27,9 +27,14 @@ namespace SpellCheck1
             updateLocaleInfo();
         }
 
+        private string GetXamlString()
+        {
+            return "";
+        }
+
+
         private void richtextbox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            
             if (IsInitialized && tryfix.IsChecked.HasValue && tryfix.IsChecked.Value )
             {
                 #region maybefix
@@ -56,13 +61,15 @@ namespace SpellCheck1
                         {
                             var range = new TextRange(start, end);
                             range.ApplyPropertyValue(FrameworkElement.LanguageProperty, richtextbox.Document.Language);
+                            
                         }
                     }
                 }
                 #endregion
             }
             
-            textbox.Text = new TextRange(richtextbox.Document.ContentStart, richtextbox.Document.ContentEnd).Text;
+            //textbox.Text = new TextRange(richtextbox.Document.ContentStart, richtextbox.Document.ContentEnd).Text;
+
 
             updateLocaleInfo();
         }
@@ -76,15 +83,15 @@ namespace SpellCheck1
 
                 Thread.CurrentThread.CurrentCulture = culture;
                 Thread.CurrentThread.CurrentUICulture = culture;
-
+                InputLanguageManager.SetInputLanguage(this, culture);
                 var lang = System.Windows.Markup.XmlLanguage.GetLanguage(culture.IetfLanguageTag);
                 //FrameworkElement.LanguageProperty.OverrideMetadata(typeof(FrameworkElement), new FrameworkPropertyMetadata( lang ));
-                MainWindow.LanguageProperty.OverrideMetadata(typeof(FrameworkElement), new FrameworkPropertyMetadata( lang ));
+                //MainWindow.LanguageProperty.OverrideMetadata(typeof(FrameworkElement), new FrameworkPropertyMetadata( lang ));
                 mainWindow.Language = lang;
                 grid1.Language = lang;
                 richtextbox.Language = lang;
                 textbox.Language = lang;
-                localeSelector.IsEnabled = false;
+                //localeSelector.IsEnabled = false;
                 updateLocaleInfo();
             }
         }
@@ -99,9 +106,19 @@ namespace SpellCheck1
                 threadLocale.Text = currentCi.IetfLanguageTag;
                 uilocale.Text = currentUICi.IetfLanguageTag;
                 flowdocLocale.Text = richtextbox.Document.Language.IetfLanguageTag;
-                //windowLocale.Text = GetWindow(richtextbox).Language.IetfLanguageTag;
                 windowLocale.Text = mainWindow.Language.IetfLanguageTag;
                 textboxLocale.Text = textbox.Language.IetfLanguageTag;
+                var tmp = InputLanguageManager.GetInputLanguage(richtextbox);
+                tmp = InputLanguageManager.Current.CurrentInputLanguage;
+                if (tmp.ThreeLetterISOLanguageName.Equals("ivl"))
+                {
+                    inputLocale.Text = "invariant";
+                }
+                else
+                {
+                    inputLocale.Text = tmp.IetfLanguageTag;
+                }
+                 
                 var firstErrorPos = richtextbox.GetNextSpellingErrorPosition(richtextbox.Document.ContentStart, LogicalDirection.Forward);
                 int i = 0;
                 TextPointer pos = richtextbox.GetNextSpellingErrorPosition(richtextbox.Document.ContentStart, LogicalDirection.Forward);
@@ -111,9 +128,29 @@ namespace SpellCheck1
                     pos = range.End;
                     i++;
                     pos = richtextbox.GetNextSpellingErrorPosition(pos, LogicalDirection.Forward);
+                    if (i > Byte.MaxValue)
+                    {
+                        break;
+                    }
                 }
                 errorCount.Content = i;
 
+            }
+        }
+
+        private void richtextbox_SelectionChanged(object sender, RoutedEventArgs e)
+        {
+            if (IsInitialized)
+            {
+                var lang = richtextbox.Selection.GetPropertyValue(FrameworkElement.LanguageProperty);
+                if (lang == DependencyProperty.UnsetValue )
+                {
+                    cursorLocale.Text = "";
+                }
+                else
+                {
+                    cursorLocale.Text = lang.ToString();
+                }
             }
         }
     }
