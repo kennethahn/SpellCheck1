@@ -15,30 +15,30 @@
                 </Paragraph>
             </FlowDocument>
         </RichTextBox>
-        <Label Content="UI cult." HorizontalAlignment="Left" Margin="406,111,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="uilocale" HorizontalAlignment="Left" Height="23" Margin="465,111,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" IsEnabled="False" Grid.ColumnSpan="2"/>
+        <Label Content="UI cult." HorizontalAlignment="Left" Margin="407,116,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="uilocale" HorizontalAlignment="Left" Height="23" Margin="465,119,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" IsEnabled="False"/>
         <Label Content="Flowdoc" HorizontalAlignment="Left" Margin="407,142,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="flowdocLocale" HorizontalAlignment="Left" Height="23" Margin="465,145,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" IsEnabled="False" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="flowdocLocale" HorizontalAlignment="Left" Height="23" Margin="465,145,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" IsEnabled="False"/>
         <Label Content="Choose" HorizontalAlignment="Left" Margin="407,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.868,0.692" Width="54"/>
         <ComboBox x:Name="localeSelector" HorizontalAlignment="Left" Margin="465,14,0,0" VerticalAlignment="Top" Width="130" SelectionChanged="localeSelector_Selected" Grid.ColumnSpan="2">
             <ComboBoxItem>da-DK</ComboBoxItem>
             <ComboBoxItem>en-US</ComboBoxItem>
         </ComboBox>
-        <Label Content="Window" HorizontalAlignment="Left" Margin="407,174,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="windowLocale" HorizontalAlignment="Left" Height="23" Margin="465,177,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" SpellCheck.IsEnabled="True" IsEnabled="False" Grid.ColumnSpan="2"/>
-        <Label Content="Culture" HorizontalAlignment="Left" Margin="406,83,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="threadLocale" HorizontalAlignment="Left" Height="23" Margin="465,83,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" IsEnabled="False" Grid.ColumnSpan="2"/>
-        <CheckBox Name="tryfix" Content="Try fix" HorizontalAlignment="Left" Margin="416,41,0,0" VerticalAlignment="Top" Width="64" FlowDirection="RightToLeft" HorizontalContentAlignment="Right" Padding="10,-1,0,0" Height="21">
+        <Label Content="Window" HorizontalAlignment="Left" Margin="407,170,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="windowLocale" HorizontalAlignment="Left" Height="23" Margin="465,173,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" SpellCheck.IsEnabled="True" IsEnabled="False"/>
+        <Label Content="Culture" HorizontalAlignment="Left" Margin="407,90,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="threadLocale" HorizontalAlignment="Left" Height="23" Margin="465,91,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" IsEnabled="False"/>
+        <CheckBox Name="tryfix" Content="Try fix" HorizontalAlignment="Left" Margin="414,41,0,0" VerticalAlignment="Top" Width="66" FlowDirection="RightToLeft" HorizontalContentAlignment="Right" Padding="10,-1,0,0" Height="21">
             <CheckBox.Resources>
                 <Style TargetType="{x:Type Path}">
                     <Setter Property="FlowDirection" Value="LeftToRight"/>
                 </Style>
             </CheckBox.Resources>
         </CheckBox>
-        <Label Content="Textbox" HorizontalAlignment="Left" Margin="407,202,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="textboxLocale" HorizontalAlignment="Left" Height="23" Margin="465,205,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" SpellCheck.IsEnabled="True" IsEnabled="False" Grid.ColumnSpan="2"/>
-        <Label Content="Errors" HorizontalAlignment="Left" Margin="407,57,0,0" VerticalAlignment="Top" Height="26" Width="48"/>
-        <Label x:Name="errorCount" Content="" HorizontalAlignment="Left" Margin="460,57,0,0" VerticalAlignment="Top" Height="26"/>
-
+        <Label Content="Textbox" HorizontalAlignment="Left" Margin="407,198,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="textboxLocale" HorizontalAlignment="Left" Height="23" Margin="465,201,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" SpellCheck.IsEnabled="True" IsEnabled="False"/>
+        <Label Content="Errors" HorizontalAlignment="Left" Margin="406,64,0,0" VerticalAlignment="Top" Height="26" Width="48"/>
+        <Label x:Name="errorCount" Content="" HorizontalAlignment="Left" Margin="465,64,0,0" VerticalAlignment="Top" Height="26" RenderTransformOrigin="4.6,-0.115" Width="35"/>
+        <Button Content="Go!" HorizontalAlignment="Left" Margin="26,41,0,0" VerticalAlignment="Top" Width="30" Grid.Column="1" RenderTransformOrigin="0.467,0.45"/>
     </Grid>
 </Window>
