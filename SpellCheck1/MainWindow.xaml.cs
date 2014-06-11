@@ -103,6 +103,16 @@ namespace SpellCheck1
                 windowLocale.Text = mainWindow.Language.IetfLanguageTag;
                 textboxLocale.Text = textbox.Language.IetfLanguageTag;
                 var firstErrorPos = richtextbox.GetNextSpellingErrorPosition(richtextbox.Document.ContentStart, LogicalDirection.Forward);
+                int i = 0;
+                TextPointer pos = richtextbox.GetNextSpellingErrorPosition(richtextbox.Document.ContentStart, LogicalDirection.Forward);
+                while (pos != null)
+                {
+                    var range = richtextbox.GetSpellingErrorRange(pos);
+                    pos = range.End;
+                    i++;
+                    pos = richtextbox.GetNextSpellingErrorPosition(pos, LogicalDirection.Forward);
+                }
+                errorCount.Content = i;
 
             }
         }
