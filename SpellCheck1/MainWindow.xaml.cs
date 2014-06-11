@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -29,7 +30,18 @@ namespace SpellCheck1
 
         private string GetXamlString()
         {
-            return "";
+            using (StringWriter sw = new StringWriter())
+            {
+                try
+                {
+                    System.Xaml.XamlServices.Save(sw, richtextbox.Document);
+                    return sw.ToString();
+                }
+                catch (Exception e)
+                {
+                    return e.Message;
+                }
+            }
         }
 
 
@@ -69,7 +81,7 @@ namespace SpellCheck1
             }
             
             //textbox.Text = new TextRange(richtextbox.Document.ContentStart, richtextbox.Document.ContentEnd).Text;
-
+            textbox.Text = GetXamlString();
 
             updateLocaleInfo();
         }
