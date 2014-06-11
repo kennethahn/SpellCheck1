@@ -1,17 +1,42 @@
 ﻿<Window x:Class="SpellCheck1.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        <TextBox x:Name="textbox" HorizontalAlignment="Left" Height="187" Margin="0,133,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="517"/>
-        <RichTextBox x:Name="richtextbox" HorizontalAlignment="Left" Height="101" VerticalAlignment="Top" Width="517" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" SpellCheck.IsEnabled="True">
-            <FlowDocument Language="da-dk">
+        Title="MainWindow" Height="271" Width="628" xml:lang="en-US" Name="mainWindow" Language="en-US">
+    <Grid Name="grid1" Margin="0,0,0,-1">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="539*"/>
+            <ColumnDefinition Width="81*"/>
+        </Grid.ColumnDefinitions>
+        <TextBox x:Name="textbox" HorizontalAlignment="Left" Height="119" Margin="0,122,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="393"/>
+        <RichTextBox x:Name="richtextbox" HorizontalAlignment="Left" Height="117" VerticalAlignment="Top" Width="393" SpellCheck.IsEnabled="True" TextChanged="richtextbox_TextChanged">
+            <FlowDocument>
                 <Paragraph>
-                    <Run Text="RichTextBox"/>
+                    <Run Text=""/>
                 </Paragraph>
             </FlowDocument>
         </RichTextBox>
-        <Button Content="Go" HorizontalAlignment="Left" Margin="432,106,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+        <Label Content="UI cult." HorizontalAlignment="Left" Margin="406,111,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="uilocale" HorizontalAlignment="Left" Height="23" Margin="465,111,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" IsEnabled="False" Grid.ColumnSpan="2"/>
+        <Label Content="Flowdoc" HorizontalAlignment="Left" Margin="407,142,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="flowdocLocale" HorizontalAlignment="Left" Height="23" Margin="465,145,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" IsEnabled="False" Grid.ColumnSpan="2"/>
+        <Label Content="Choose" HorizontalAlignment="Left" Margin="407,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.868,0.692" Width="54"/>
+        <ComboBox x:Name="localeSelector" HorizontalAlignment="Left" Margin="465,14,0,0" VerticalAlignment="Top" Width="130" SelectionChanged="localeSelector_Selected" Grid.ColumnSpan="2">
+            <ComboBoxItem>da-DK</ComboBoxItem>
+            <ComboBoxItem>en-US</ComboBoxItem>
+        </ComboBox>
+        <Label Content="Window" HorizontalAlignment="Left" Margin="407,174,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="windowLocale" HorizontalAlignment="Left" Height="23" Margin="465,177,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" SpellCheck.IsEnabled="True" IsEnabled="False" Grid.ColumnSpan="2"/>
+        <Label Content="Culture" HorizontalAlignment="Left" Margin="406,83,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="threadLocale" HorizontalAlignment="Left" Height="23" Margin="465,83,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" IsEnabled="False" Grid.ColumnSpan="2"/>
+        <CheckBox Name="tryfix" Content="Try fix" HorizontalAlignment="Left" Margin="416,41,0,0" VerticalAlignment="Top" Width="64" FlowDirection="RightToLeft" HorizontalContentAlignment="Right" Padding="10,-1,0,0" Height="21">
+            <CheckBox.Resources>
+                <Style TargetType="{x:Type Path}">
+                    <Setter Property="FlowDirection" Value="LeftToRight"/>
+                </Style>
+            </CheckBox.Resources>
+        </CheckBox>
+        <Label Content="Textbox" HorizontalAlignment="Left" Margin="407,202,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="textboxLocale" HorizontalAlignment="Left" Height="23" Margin="465,205,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" SpellCheck.IsEnabled="True" IsEnabled="False" Grid.ColumnSpan="2"/>
 
     </Grid>
 </Window>
