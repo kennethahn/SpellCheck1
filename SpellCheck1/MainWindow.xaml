@@ -15,34 +15,13 @@
                 </Paragraph>
             </FlowDocument>
         </RichTextBox>
-        <Label Content="UI cult." HorizontalAlignment="Left" Margin="9,116,0,0" VerticalAlignment="Top" Grid.Column="1"/>
-        <TextBox x:Name="uilocale" HorizontalAlignment="Left" Height="23" Margin="67,119,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" IsEnabled="False" Grid.Column="1"/>
-        <Label Content="Flowdoc" HorizontalAlignment="Left" Margin="9,142,0,0" VerticalAlignment="Top" Grid.Column="1"/>
-        <TextBox x:Name="flowdocLocale" HorizontalAlignment="Left" Height="23" Margin="67,145,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" IsEnabled="False" Grid.Column="1"/>
-        <Label Content="Set culture" HorizontalAlignment="Left" Margin="9,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.868,0.692" Width="105" Grid.Column="1"/>
+        <Label Content="Set culture" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.868,0.692" Width="105" Grid.Column="1"/>
         <ComboBox x:Name="localeSelector" HorizontalAlignment="Left" Margin="86,14,0,0" VerticalAlignment="Top" Width="111" SelectionChanged="localeSelector_Selected" Grid.Column="1">
             <ComboBoxItem Content="da-DK"/>
             <ComboBoxItem Content="en-US"/>
             <ComboBoxItem Content="de-DE"/>
         </ComboBox>
-        <Label Content="Window" HorizontalAlignment="Left" Margin="9,170,0,0" VerticalAlignment="Top" Grid.Column="1"/>
-        <TextBox x:Name="windowLocale" HorizontalAlignment="Left" Height="23" Margin="67,173,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" SpellCheck.IsEnabled="True" IsEnabled="False" Grid.Column="1"/>
-        <Label Content="Culture" HorizontalAlignment="Left" Margin="9,90,0,0" VerticalAlignment="Top" Grid.Column="1"/>
-        <TextBox x:Name="threadLocale" HorizontalAlignment="Left" Height="23" Margin="67,91,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" IsEnabled="False" Grid.Column="1"/>
-        <CheckBox x:Name="tryfix" Content="Try fix" HorizontalAlignment="Left" Margin="131,52,0,0" VerticalAlignment="Top" Width="66" FlowDirection="RightToLeft" HorizontalContentAlignment="Right" Padding="10,-1,0,0" Height="21" Grid.Column="1">
-            <CheckBox.Resources>
-                <Style TargetType="{x:Type Path}">
-                    <Setter Property="FlowDirection" Value="LeftToRight"/>
-                </Style>
-            </CheckBox.Resources>
+        <CheckBox x:Name="tryfix" Content="Try fix" HorizontalAlignment="Left" Margin="86,54,0,0" VerticalAlignment="Top" Width="82" Height="21" Grid.Column="1" RenderTransformOrigin="0.485,0.524">
         </CheckBox>
-        <Label Content="Textbox" HorizontalAlignment="Left" Margin="9,198,0,0" VerticalAlignment="Top" Grid.Column="1"/>
-        <TextBox x:Name="textboxLocale" HorizontalAlignment="Left" Height="23" Margin="67,201,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" SpellCheck.IsEnabled="True" IsEnabled="False" Grid.Column="1"/>
-        <Label Content="Errors" HorizontalAlignment="Left" Margin="8,45,0,0" VerticalAlignment="Top" Height="26" Width="48" Grid.Column="1"/>
-        <Label x:Name="errorCount" Content="" HorizontalAlignment="Left" Margin="67,45,0,0" VerticalAlignment="Top" Height="26" RenderTransformOrigin="4.6,-0.115" Width="35" Grid.Column="1"/>
-        <Label Content="Input" HorizontalAlignment="Left" Margin="9,226,0,0" VerticalAlignment="Top" Grid.Column="1"/>
-        <TextBox x:Name="inputLocale" HorizontalAlignment="Left" Height="23" Margin="67,229,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" SpellCheck.IsEnabled="True" IsEnabled="False" Grid.Column="1"/>
-        <Label Content="Cursor" HorizontalAlignment="Left" Margin="9,254,0,0" VerticalAlignment="Top" Grid.Column="1"/>
-        <TextBox x:Name="cursorLocale" HorizontalAlignment="Left" Height="23" Margin="67,257,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" SpellCheck.IsEnabled="True" IsEnabled="False" Grid.Column="1"/>
     </Grid>
 </Window>

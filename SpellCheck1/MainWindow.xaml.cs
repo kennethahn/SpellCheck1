@@ -28,23 +28,6 @@ namespace SpellCheck1
             updateLocaleInfo();
         }
 
-        private string GetXamlString()
-        {
-            using (StringWriter sw = new StringWriter())
-            {
-                try
-                {
-                    System.Xaml.XamlServices.Save(sw, richtextbox.Document);
-                    return sw.ToString();
-                }
-                catch (Exception e)
-                {
-                    return e.Message;
-                }
-            }
-        }
-
-
         private void richtextbox_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (IsInitialized && tryfix.IsChecked.HasValue && tryfix.IsChecked.Value )
@@ -79,10 +62,6 @@ namespace SpellCheck1
                 }
                 #endregion
             }
-            
-            //textbox.Text = new TextRange(richtextbox.Document.ContentStart, richtextbox.Document.ContentEnd).Text;
-            textbox.Text = GetXamlString();
-
             updateLocaleInfo();
         }
 
@@ -98,13 +77,12 @@ namespace SpellCheck1
                 InputLanguageManager.SetInputLanguage(this, culture);
                 var lang = System.Windows.Markup.XmlLanguage.GetLanguage(culture.IetfLanguageTag);
                 //FrameworkElement.LanguageProperty.OverrideMetadata(typeof(FrameworkElement), new FrameworkPropertyMetadata( lang ));
-                //MainWindow.LanguageProperty.OverrideMetadata(typeof(FrameworkElement), new FrameworkPropertyMetadata( lang ));
+                //localeSelector.IsEnabled = false;
                 mainWindow.Language = lang;
                 grid1.Language = lang;
                 richtextbox.Language = lang;
                 richtextbox.Document.Language = lang;
                 textbox.Language = lang;
-                //localeSelector.IsEnabled = false;
                 updateLocaleInfo();
             }
         }
@@ -115,21 +93,32 @@ namespace SpellCheck1
             {
                 CultureInfo currentCi = CultureInfo.CurrentCulture;
                 CultureInfo currentUICi = CultureInfo.CurrentUICulture;
-
-                threadLocale.Text = currentCi.IetfLanguageTag;
-                uilocale.Text = currentUICi.IetfLanguageTag;
-                flowdocLocale.Text = richtextbox.Document.Language.IetfLanguageTag;
-                windowLocale.Text = mainWindow.Language.IetfLanguageTag;
-                textboxLocale.Text = textbox.Language.IetfLanguageTag;
+                textbox.Clear();
+                textbox.AppendText("Thread cult:\t" + currentCi.IetfLanguageTag);
+                textbox.AppendText("\nThread UI cult:\t" + currentUICi.IetfLanguageTag);
+                textbox.AppendText("\nWindow lang:\t" + mainWindow.Language.IetfLanguageTag);
+                textbox.AppendText("\nRichTextBox lang:\t" + richtextbox.Language.IetfLanguageTag);
+                textbox.AppendText("\nFlowdoc lang:\t" + richtextbox.Document.Language.IetfLanguageTag);
+               
                 var tmp = InputLanguageManager.GetInputLanguage(richtextbox);
                 tmp = InputLanguageManager.Current.CurrentInputLanguage;
                 if (tmp.ThreeLetterISOLanguageName.Equals("ivl"))
                 {
-                    inputLocale.Text = "invariant";
+                    textbox.AppendText("\nInput lang:\t" + "invariant");
                 }
                 else
                 {
-                    inputLocale.Text = tmp.IetfLanguageTag;
+                    textbox.AppendText("\nInput lang:\t" + tmp.IetfLanguageTag);
+                }
+
+                var lang = richtextbox.Selection.GetPropertyValue(FrameworkElement.LanguageProperty);
+                if (lang == DependencyProperty.UnsetValue)
+                {
+                    textbox.AppendText("\nSelection lang:\t");
+                }
+                else
+                {
+                    textbox.AppendText("\nSelection lang:\t" + lang.ToString());
                 }
                  
                 var firstErrorPos = richtextbox.GetNextSpellingErrorPosition(richtextbox.Document.ContentStart, LogicalDirection.Forward);
@@ -146,7 +135,8 @@ namespace SpellCheck1
                         break;
                     }
                 }
-                errorCount.Content = i;
+                textbox.AppendText("\nSpeling errors:\t" + i);
+
 
             }
         }
@@ -155,15 +145,7 @@ namespace SpellCheck1
         {
             if (IsInitialized)
             {
-                var lang = richtextbox.Selection.GetPropertyValue(FrameworkElement.LanguageProperty);
-                if (lang == DependencyProperty.UnsetValue )
-                {
-                    cursorLocale.Text = "";
-                }
-                else
-                {
-                    cursorLocale.Text = lang.ToString();
-                }
+                updateLocaleInfo();
             }
         }
     }
