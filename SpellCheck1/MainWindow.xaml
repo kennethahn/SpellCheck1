@@ -1,17 +1,17 @@
 ﻿<Window x:Class="SpellCheck1.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="333" Width="628" Name="mainWindow" Language="da-DK">
+        Title="MainWindow" Height="333" Width="628" Name="mainWindow" xml:lang="da-DK" Language="da-DK">
     <Grid Name="grid1" Margin="0,0,0,-5">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="199*"/>
             <ColumnDefinition Width="111*"/>
         </Grid.ColumnDefinitions>
         <TextBox x:Name="textbox" HorizontalAlignment="Left" Height="180" Margin="0,122,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="393"/>
-        <RichTextBox x:Name="richtextbox" HorizontalAlignment="Left" Height="117" VerticalAlignment="Top" Width="393" SpellCheck.IsEnabled="True" TextChanged="richtextbox_TextChanged" SelectionChanged="richtextbox_SelectionChanged">
-            <FlowDocument>
-                <Paragraph>
-                    <Run Text=""/>
+        <RichTextBox x:Name="richtextbox" HorizontalAlignment="Left" Height="117" VerticalAlignment="Top" Width="393" SpellCheck.IsEnabled="True" TextChanged="richtextbox_TextChanged" SelectionChanged="richtextbox_SelectionChanged" xml:lang="da-DK">
+            <FlowDocument xml:lang="da-DK">
+                <Paragraph xml:lang="da-DK">
+                    <Run Text="" xml:lang="da-DK"/>
                 </Paragraph>
             </FlowDocument>
         </RichTextBox>
@@ -23,6 +23,7 @@
         <ComboBox x:Name="localeSelector" HorizontalAlignment="Left" Margin="86,14,0,0" VerticalAlignment="Top" Width="111" SelectionChanged="localeSelector_Selected" Grid.Column="1">
             <ComboBoxItem Content="da-DK"/>
             <ComboBoxItem Content="en-US"/>
+            <ComboBoxItem Content="de-DE"/>
         </ComboBox>
         <Label Content="Window" HorizontalAlignment="Left" Margin="9,170,0,0" VerticalAlignment="Top" Grid.Column="1"/>
         <TextBox x:Name="windowLocale" HorizontalAlignment="Left" Height="23" Margin="67,173,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" SpellCheck.IsEnabled="True" IsEnabled="False" Grid.Column="1"/>

@@ -86,7 +86,7 @@ namespace SpellCheck1
             updateLocaleInfo();
         }
 
-        private void localeSelector_Selected(object sender, RoutedEventArgs e)
+        private void localeSelector_Selected(object sender, SelectionChangedEventArgs e)
         {
             if( localeSelector.SelectedItem != null){
                 string tmp = (localeSelector.SelectedItem as ComboBoxItem).Content.ToString();
@@ -102,6 +102,7 @@ namespace SpellCheck1
                 mainWindow.Language = lang;
                 grid1.Language = lang;
                 richtextbox.Language = lang;
+                richtextbox.Document.Language = lang;
                 textbox.Language = lang;
                 //localeSelector.IsEnabled = false;
                 updateLocaleInfo();
